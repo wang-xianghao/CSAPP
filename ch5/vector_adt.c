@@ -103,7 +103,7 @@ int main() {
     };
     vec_ptr v;
     data_t dest;
-    clock_t start, end;
+    unsigned long long start, end;
     double cpe;
 
     for (int i = 0; i < 4; ++ i) {
