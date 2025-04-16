@@ -1,8 +1,17 @@
 # Chapter 5 Practice Problems
 
 ## Question 5.5
-**A**. there are $2n$ additions and $2n$ multiplications performed.
+**A**. There are $2n$ additions and $2n$ multiplications performed.
 
-**B**. 
+**B**. The total cycles are $5n+3$, then CPE is $5$.
 
 ![](plots/poly.svg)
+
+## Question 5.6
+**A**. $2n$ additions and $n$ multiplications are performed;
+
+**B**. The total cycles are $8n$, then CPE is $8$.
+
+![](plots/polyh.svg)
+
+**C**. The one in 5.6 has smaller CPE via critical path analysis.
