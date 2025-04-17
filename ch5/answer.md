@@ -16,6 +16,9 @@
 
 **C**. The one in 5.6 has smaller CPE via critical path analysis.
 
+## Question 5.7
+Please see [poly.c](poly.c).
+
 ## Question 5.8
 As the data-flow graph shown, we get the following CPEs for each reassociation.
 * `r = ((r * x) * y) * z`: $5$ cycles
@@ -24,3 +27,6 @@ As the data-flow graph shown, we get the following CPEs for each reassociation.
 * `r = r * (x * (y * z))`: $\frac{5}{3}$ cycles
 * `r = (r * x) * (y * z)`: $\frac{10}{3}$ cycles
 ![](plots/aprod.svg)
+
+## Question 5.9
+Please see [merge.c](merge.c)
