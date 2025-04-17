@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <x86intrin.h>
 
-#define IDENT 0.0f
-#define OP +
-typedef float data_t;
+#define IDENT 1.0
+#define OP *
+typedef double data_t;
 
 typedef struct
 {
@@ -155,8 +155,8 @@ void combine7(vec_ptr v, data_t *dest) {
 
 int main() {
     const int NUM_COMBINES = 7;
-    const long length = 1000000;
-    void (*combines[NUM_COMBINES])(vec_ptr, data_t*) = {
+    const long length = 100000000;
+    void (*combines[])(vec_ptr, data_t*) = {
         combine1, combine2, combine3, combine4, combine5,
         combine6, combine7
     };
