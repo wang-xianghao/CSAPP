@@ -96,19 +96,77 @@ void combine4(vec_ptr v, data_t *dest) {
     *dest = acc;
 }
 
+// Loop unrolling 2x1
+void combine5(vec_ptr v, data_t *dest) {
+    long i;
+    long length = vec_length(v);
+    data_t *data = get_vec_start(v);
+    data_t acc = IDENT;
+
+    for (i = 0; i < length - 1; i += 2) {
+        acc = acc OP data[i];
+        acc = acc OP data[i + 1];
+    }
+
+    for (; i < length; i ++) {
+        acc = acc OP data[i];
+    }
+
+    *dest = acc;
+}
+
+// Loop unrolling 2x2
+void combine6(vec_ptr v, data_t *dest) {
+    long i;
+    long length = vec_length(v);
+    data_t *data = get_vec_start(v);
+    data_t acc0 = IDENT;
+    data_t acc1 = IDENT;
+
+    for (i = 0; i < length - 1; i += 2) {
+        acc0 = acc0 OP data[i];
+        acc1 = acc1 OP data[i + 1];
+    }
+
+    for (; i < length; i ++) {
+        acc0 = acc0 OP data[i];
+    }
+
+    *dest = acc0 OP acc1;
+}
+
+// Reassociation transformation
+void combine7(vec_ptr v, data_t *dest) {
+    long i;
+    long length = vec_length(v);
+    data_t *data = get_vec_start(v);
+    data_t acc = IDENT;
+
+    for (i = 0; i < length - 1; i += 2) {
+        acc = acc OP (data[i] OP data[i + 1]);
+    }
+
+    for (; i < length; i ++) {
+        acc = acc OP data[i];
+    }
+
+    *dest = acc;
+}
+
 int main() {
+    const int NUM_COMBINES = 7;
     const long length = 1000000;
-    void (*combines[4])(vec_ptr, data_t*) = {
-        combine1, combine2, combine3, combine4
+    void (*combines[NUM_COMBINES])(vec_ptr, data_t*) = {
+        combine1, combine2, combine3, combine4, combine5,
+        combine6, combine7
     };
     vec_ptr v;
     data_t dest;
     unsigned long long start, end;
     double cpe;
 
-    for (int i = 0; i < 4; ++ i) {
+    for (int i = 0; i < NUM_COMBINES; ++ i) {
         v = new_vec(length);
-        dest;
         start = __rdtsc();
         combines[i](v, &dest);
         end = __rdtsc();
