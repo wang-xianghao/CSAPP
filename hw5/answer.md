@@ -13,3 +13,6 @@
 **A**. The CPE is bounded by throughput.
 
 **B**. kx1 unrolling cannot breakthorugh the latency bound.
+
+## Question 5.15
+The thoughput bound limits the performance to a CPE of 1.
