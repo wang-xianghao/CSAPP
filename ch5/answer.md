@@ -37,6 +37,16 @@ Please see [merge.c](merge.c)
 **B**. The elements at $[1, 1000)$ are set to `a[0]`.
 
 **C**. During copying `a+1` to `a`, the load address never mathces any address in store buffer set by `s_addr`. Thus, the cirtical path is just `add`. Copying `a` to `a+1` leads to the address match, which causes the dependency between `s_data` and `load`. Therefore, the cirtical path is `load` and `s_data`.
+
 ![](plots/copy_array.svg)
 
 **D.** The expect CPE is around 1 cycle, same to copying `a+1` to `a`. Different iteration handles different address, so the address would never match.
+
+## Question 5.11 & 5.12
+The dataflow graphs of `psum1` and our optimizer version are shown in the follwing plot. We have two methods to create the optimizer version.
+* Use a variable store the prefix sum result in previous iteration.
+* Use `const` to decorate the array so that compiler would not assume the array and the prefix sum array may be alis and so automatically removes the dependency.
+
+Please see `psum3` and `psum4` in [psum.c](psum.c)
+
+![](plots/psum.svg)
