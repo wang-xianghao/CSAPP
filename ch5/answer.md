@@ -30,3 +30,13 @@ As the data-flow graph shown, we get the following CPEs for each reassociation.
 
 ## Question 5.9
 Please see [merge.c](merge.c)
+
+## Question 5.10
+**A**. The first 1000 elements are shifted right by one position.
+
+**B**. The elements at $[1, 1000)$ are set to `a[0]`.
+
+**C**. During copying `a+1` to `a`, the load address never mathces any address in store buffer set by `s_addr`. Thus, the cirtical path is just `add`. Copying `a` to `a+1` leads to the address match, which causes the dependency between `s_data` and `load`. Therefore, the cirtical path is `load` and `s_data`.
+![](plots/copy_array.svg)
+
+**D.** The expect CPE is around 1 cycle, same to copying `a+1` to `a`. Different iteration handles different address, so the address would never match.
