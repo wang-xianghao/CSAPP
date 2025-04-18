@@ -1,0 +1,15 @@
+# Chapter 5 Homework
+
+## Question 5.13
+**A & B**. The lower bound of CPE is the floating-point addition latency i.e. 3 cycles.
+
+![](plots/inner1.svg)
+
+**C**. The critical path does not change, so the CPE lower bound is integer addition latency i.e. 1 cycle.
+
+**D**. As the plot shown, multiplication is not on the critical path.
+
+## Question 5.14
+**A**. The CPE is bounded by throughput.
+
+**B**. kx1 unrolling cannot breakthorugh the latency bound.
