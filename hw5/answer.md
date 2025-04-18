@@ -16,3 +16,6 @@
 
 ## Question 5.15
 The thoughput bound limits the performance to a CPE of 1.
+
+## Question 5.16
+Please see `inner4` in [inner.c](inner.c).
