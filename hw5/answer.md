@@ -22,3 +22,6 @@ Please see `inner4` in [inner.c](inner.c).
 
 ## Question 5.17
 Please see [memset.c](memset.c).
+
+## Question 5.18
+Please see [poly.c](poly.c).
