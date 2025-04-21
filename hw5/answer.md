@@ -25,3 +25,8 @@ Please see [memset.c](memset.c).
 
 ## Question 5.18
 Please see [poly.c](poly.c).
+
+## Question 5.19
+The CPE is reduced to $\frac{3}{4}$ addition latency with 4x unrolling, to $\frac{1}{2}$ addition latency with 2x unrolling in [psum.c](psum.c).
+
+![](plots/psum_opt.svg)
