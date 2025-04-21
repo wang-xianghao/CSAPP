@@ -10,14 +10,14 @@ void clear_array(float *dest, long n) {
 
 void psum1(float a[], float p[], long n) {
     long i;
-    p[i] = a[i];
+    p[0] = a[0];
     for (i = 1; i < n; i ++)
         p[i] = p[i - 1] + a[i];
 }
 
 void psum2(float a[], float p[], long n) {
     long i;
-    p[i] = a[i];
+    p[0] = a[0];
     for (i = 1; i < n - 1; i += 2) {
         float mid_val = p[i - 1] + a[i];
         p[i] = mid_val;
@@ -31,8 +31,8 @@ void psum2(float a[], float p[], long n) {
 void psum3(float a[], float p[], long n) {
     long i;
     float prev;
-    p[i] = a[i];
-    prev = p[i];
+    p[0] = a[0];
+    prev = p[0];
 
     for (i = 1; i < n; i ++) {
         prev = prev + a[i];
