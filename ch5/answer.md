@@ -43,9 +43,7 @@ Please see [merge.c](merge.c)
 **D.** The expect CPE is around 1 cycle, same to copying `a+1` to `a`. Different iteration handles different address, so the address would never match.
 
 ## Question 5.11 & 5.12
-The dataflow graphs of `psum1` and our optimizer version are shown in the follwing plot. We have two methods to create the optimizer version.
-* Use a variable store the prefix sum result in previous iteration.
-* Use `const` to decorate the array so that compiler would not assume the array and the prefix sum array may be alis and so automatically removes the dependency.
+The dataflow graphs of `psum1` and our optimizer version are shown in the follwing plot. We use a variable store the prefix sum result in previous iteration.
 
 Please see `psum3` and `psum4` in [psum.c](psum.c)
 

@@ -35,22 +35,11 @@ void psum3(float a[], float p[], long n) {
     prev = p[i];
 
     for (i = 1; i < n; i ++) {
-        p[i] = prev + a[i];
-        prev = p[i];
-    }
-}
-
-void psum4(const float a[], float p[], long n) {
-    long i;
-    float prev;
-    p[i] = a[i];
-    prev = p[i];
-
-    for (i = 1; i < n; i ++) {
         prev = prev + a[i];
         p[i] = prev;
     }
 }
+
 
 int main() {
     const int length = 100000000;
@@ -84,13 +73,6 @@ int main() {
     end = __rdtsc();
     cpe = (double) (end - start) / length;
     printf("psum3 (avoid w/r dependency):       %5.2lf\n", cpe);
-
-    // psum4: avoid w/r via compiler
-    start = __rdtsc();
-    psum4(arr, sum, length);
-    end = __rdtsc();
-    cpe = (double) (end - start) / length;
-    printf("psum3 (avoid w/r via compiler):     %5.2lf\n", cpe);
 
     return 0;
 }
