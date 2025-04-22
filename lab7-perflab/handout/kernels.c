@@ -10,10 +10,10 @@
  * Please fill in the following team struct 
  */
 team_t team = {
-    "bovik",              /* Team name */
+    "HUHUHU",              /* Team name */
 
-    "Harry Q. Bovik",     /* First member full name */
-    "bovik@nowhere.edu",  /* First member email address */
+    "Xianghao Wang",     /* First member full name */
+    "wang.xianghao@outlook.com",  /* First member email address */
 
     "",                   /* Second member full name (leave blank if none) */
     ""                    /* Second member email addr (leave blank if none) */
@@ -47,7 +47,29 @@ void naive_rotate(int dim, pixel *src, pixel *dst)
 char rotate_descr[] = "rotate: Current working version";
 void rotate(int dim, pixel *src, pixel *dst) 
 {
-    naive_rotate(dim, src, dst);
+    int i, j;
+    int ii, jj;
+    const int T = 16;
+
+    for (i = 0; i < dim; i += T) {
+        for (j = 0; j < dim; j += T) {
+            for (ii = i; ii < i + T; ii ++) {
+                for (jj = j; jj < j + T; jj += 1) {
+                    dst[RIDX(ii, jj, dim)] = src[RIDX(jj, dim-1-ii, dim)];
+                }
+            }   
+        }    
+    }
+}
+
+char trans_rotate_descr[] = "rotate: Transpose loop";
+void trans_rotate(int dim, pixel *src, pixel *dst) 
+{
+    int i, j;
+
+    for (i = 0; i < dim; i++)
+	for (j = 0; j < dim; j++)
+	    dst[RIDX(i, j, dim)] = src[RIDX(j, dim-1-i, dim)];
 }
 
 /*********************************************************************
@@ -62,6 +84,7 @@ void register_rotate_functions()
 {
     add_rotate_function(&naive_rotate, naive_rotate_descr);   
     add_rotate_function(&rotate, rotate_descr);   
+    add_rotate_function(&trans_rotate, trans_rotate_descr);
     /* ... Register additional test functions here */
 }
 

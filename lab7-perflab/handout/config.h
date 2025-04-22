@@ -10,11 +10,16 @@
  * image. Run the driver.c program on your system to get these
  * numbers.  
  */
-#define R64    14.7
-#define R128   40.1
-#define R256   46.4
-#define R512   65.9
-#define R1024  94.5
+// #define R64    14.7
+// #define R128   40.1
+// #define R256   46.4
+// #define R512   65.9
+// #define R1024  94.5
+#define R64    1.6
+#define R128   1.8
+#define R256   3.3
+#define R512   6.3
+#define R1024  10.6
 
 /* 
  * CPEs for the baseline (naive) version of the smooth function that
